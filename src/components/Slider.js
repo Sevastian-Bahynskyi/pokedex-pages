@@ -7,16 +7,18 @@ function Slider({
 	thumbColor = 'hsla(50,90%,50%,1)',
 	backgroundColor = '#333',
 	value,
+	step = 1,
 }) {
 	return (
 		<>
 			<input
-				class="slider"
+				className="slider"
 				id={to}
 				type="range"
 				min={from}
 				max={to}
 				value={value}
+				step={step}
 				onChange={onChange}
 			></input>
 
