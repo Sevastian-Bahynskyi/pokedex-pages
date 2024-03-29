@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Slider from './Slider';
 import PokeGrid from './PokeGrid';
-import './PokeDex.css';
+import '../styles/PokeDex.css';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import Button from '@mui/material/Button';

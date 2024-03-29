@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './PokeFullCard.css';
+import '../styles/PokeFullCard.css';
 import CloseIcon from '@mui/icons-material/Close';
 import Button from '@mui/material/Button';
 import { PuffLoader } from 'react-spinners';

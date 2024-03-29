@@ -1,15 +1,18 @@
 import CloseIcon from '@mui/icons-material/Close';
 import Button from '@mui/material/Button';
-import './Modal.css';
+import '../styles/Modal.css';
+import { useEffect, useState } from 'react';
 
 function Modal({
 	isVisible,
 	content,
 	style,
-	onClose,
+	onClose = () => {},
 	closeBtnColor = 'black',
 }) {
-	if (!isVisible) return null;
+	const [isVisibleState, setIsVisibleState] = useState(isVisible);
+
+	if (!isVisibleState) return null;
 	return (
 		<>
 			<div className={`modal-overlay`}></div>
@@ -18,7 +21,7 @@ function Modal({
 					className="close-button"
 					onClick={() => {
 						onClose();
-						isVisible = false;
+						setIsVisibleState(false);
 					}}
 					style={{ color: closeBtnColor }}
 				>

@@ -1,15 +1,19 @@
-import { useState, useEffect } from 'react';
-import Slider from './components/Slider';
-import './App.css';
-import Button from '@mui/material/Button';
-import PokeDex from './components/PokeDex';
+import './styles/index.css';
+import './styles/styles.css';
+import { Link, Outlet } from 'react-router-dom';
 
-function App() {
+export default function App() {
 	return (
-		<div className="App-main">
-			<PokeDex></PokeDex>
-		</div>
+		<>
+			<nav>
+				<Link className="link" to="/">
+					Home
+				</Link>
+				<Link className="link" to="/about">
+					About
+				</Link>
+			</nav>
+			<Outlet></Outlet>
+		</>
 	);
 }
-
-export default App;

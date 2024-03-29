@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import PokeCard from './PokeCard.js';
 import { PuffLoader } from 'react-spinners';
 import { getPokemonColorFromType } from '../utils/PokemonHelper.js';
-import './PokeCard.css';
-import '../styles.css';
+import '../styles/PokeCard.css';
+import '../styles/styles.css';
 
 function PokeGrid({ pokeUrlList, cardWidth, initialColumns, onPokeCardClick }) {
 	const calculateColumns = () =>

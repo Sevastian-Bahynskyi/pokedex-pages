@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './PokeCard.css';
+import '../styles/PokeCard.css';
 
 function PokeCard({ pokemonData, cardWidth, color, onClick }) {
 	const [nameChanged, setNameChanged] = useState(pokemonData.name);
