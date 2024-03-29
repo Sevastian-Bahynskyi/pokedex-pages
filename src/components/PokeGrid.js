@@ -65,7 +65,7 @@ function PokeGrid({ pokeUrlList, cardWidth, initialColumns, onPokeCardClick }) {
 		return () => {
 			window.removeEventListener('resize', handleResize);
 		};
-	}, [cardWidth]);
+	}, [cardWidth, calculateColumns]);
 
 	const pokedexStyle = {
 		display: 'grid',
