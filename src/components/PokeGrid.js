@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import PokeCard from './PokeCard.js';
 import { PuffLoader } from 'react-spinners';
-import { GetPokemonColor } from '../utils/PokemonColor.js';
+import { getPokemonColorFromType } from '../utils/PokemonHelper.js';
 import './PokeCard.css';
 import '../styles.css';
 
@@ -29,7 +29,7 @@ function PokeGrid({ pokeUrlList, cardWidth, initialColumns, onPokeCardClick }) {
 
 				const newPokemonData = responses.map((data) => {
 					const type = data.types.map((type) => type.type.name)[0];
-					const color = GetPokemonColor(type);
+					const color = getPokemonColorFromType(type);
 					return {
 						id: data.id,
 						name: data.name,

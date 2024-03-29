@@ -19,6 +19,7 @@ function PokeCard({ pokemonData, cardWidth, color, onClick }) {
 		width: `${cardWidth}px`,
 		height: `${cardWidth / 2}px`,
 		backgroundColor: color,
+		borderRadius: `${cardWidth / 15}px`,
 	};
 
 	pokemonData.name =

@@ -1,0 +1,50 @@
+:root {
+    --slider-height: 50px;
+}
+
+
+.my-slider {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.pagination-button {
+    min-width: 40px !important;
+}
+
+.pagination-buttons {
+    user-select: none;
+}
+
+.pagination-buttons label {
+    margin-inline: 10px;
+}
+
+.grid {
+    margin-top: calc(var(--slider-height) + 10px);
+}
+
+.control-panel {
+    display: flex;
+    width: 100%;
+    height: var(--slider-height);
+    background-color: white;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 10;
+    user-select: none;
+    top: 0;
+}
+
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

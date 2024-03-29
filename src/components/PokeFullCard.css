@@ -1,19 +1,9 @@
-.modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
-    color: #333;
-    z-index: 100;
-}
-
 .poke-full-card {
     user-select: none;
-    width: 70%;
+    width: 40%;
     height: fit-content;
-
+    margin-top: 0;
+    padding-top: 0px !important;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,32 +13,60 @@
     padding: 2rem 4rem;
     padding-bottom: 1rem;
     border-radius: 15px;
+    z-index: 101 !important;
 }
 
-.close-button {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: #2b2b2b;
-    min-width: 30px;
+
+.poke-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.close-button:hover {
-    color: #555;
-}
-
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
+.top-section,
+.bottom-section {
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 100;
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    justify-content: space-evenly;
 }
+
+.bottom-section {
+    justify-content: space-evenly;
+}
+
+.types-section {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.abilities-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.abilities-section label {
+    padding-inline: 0px;
+}
+
+.abilities-section h3 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+
+
+.pokemon-type {
+    padding: 0.3rem 0.8rem;
+    border-radius: 10px;
+}
+
+
 
 #poke-img {
-    width: 10vw;
+    width: 35% !important;
 }
