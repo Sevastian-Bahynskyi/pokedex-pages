@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import { PuffLoader } from 'react-spinners';
 import { getPokemonColorFromType } from '../utils/PokemonHelper';
 import tinycolor from 'tinycolor2';
-import PokeStats from './PokeStats';
+import PokeStatsChart from './PokeStatsChart';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import Modal from './Modal';
 
@@ -114,11 +114,15 @@ function PokeFullCard({ isVisible, pokemonSmallData, onClose }) {
 
 		content = (
 			<>
-				<h2 className="poke-name">{pokemonAllData.name}</h2>
+				<h1 className="poke-name">{pokemonAllData.name}</h1>
 				<div className="top-section">
 					<div className="abilities-section">
-						<h3>Abilities</h3>
-						{abilitiesSection}
+						<h3>Abilities:</h3>
+						<div
+							style={{ display: 'flex', flexDirection: 'column' }}
+						>
+							{abilitiesSection}
+						</div>
 					</div>
 					<img
 						id="poke-img"
@@ -141,7 +145,7 @@ function PokeFullCard({ isVisible, pokemonSmallData, onClose }) {
 							<b>Height</b>: {pokemonAllData.height * 10} sm
 						</label>
 					</div>
-					<PokeStats
+					<PokeStatsChart
 						stats={pokemonAllData.stats}
 						color={tinycolor(pokemonAllData.color)
 							.lighten(10)
@@ -151,7 +155,7 @@ function PokeFullCard({ isVisible, pokemonSmallData, onClose }) {
 
 				<Button onClick={playAudio} title="Play Cry">
 					<PlayCircleOutlineIcon
-						style={{ fontSize: '5vw', color: secondaryColor }}
+						style={{ fontSize: '4rem', color: secondaryColor }}
 					></PlayCircleOutlineIcon>
 				</Button>
 				<audio id="poke-cry">
@@ -169,7 +173,6 @@ function PokeFullCard({ isVisible, pokemonSmallData, onClose }) {
 				style={{
 					backgroundColor: pokemonAllData.color,
 					color: secondaryColor,
-					fontSize: `${windowWidth / 100}px`,
 				}}
 				onClose={onClose}
 				isVisible={isVisible}

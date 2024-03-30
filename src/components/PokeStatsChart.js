@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import '../styles/PokeStatsChart.css';
 import {
 	Chart as ChartJS,
 	RadialLinearScale,
@@ -11,7 +12,7 @@ import {
 import { Radar } from 'react-chartjs-2';
 import hexRgb from 'hex-rgb';
 
-function PokeStats({ stats, color = 'white', max = 120 }) {
+function PokeStatsChart({ stats, color = 'white', max = 120 }) {
 	ChartJS.register(
 		RadialLinearScale,
 		PointElement,
@@ -39,8 +40,7 @@ function PokeStats({ stats, color = 'white', max = 120 }) {
 	console.log(data.datasets[0].backgroundColor);
 
 	const options = {
-		autoPadding: false,
-		responsive: true,
+		responsive: false,
 		maintainAspectRatio: false,
 		scales: {
 			r: {
@@ -57,21 +57,11 @@ function PokeStats({ stats, color = 'white', max = 120 }) {
 		},
 	};
 
-	const chartSize = 300;
-
 	return (
-		<div style={{ width: '20vw' }}>
-			<Radar
-				data={data}
-				options={options}
-				style={{
-					display: 'block',
-					width: `${chartSize}px !important`,
-					height: `${chartSize}px`,
-				}}
-			/>
+		<div>
+			<Radar className="radar-chart" data={data} options={options} />
 		</div>
 	);
 }
 
-export default PokeStats;
+export default PokeStatsChart;

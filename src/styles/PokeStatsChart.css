@@ -1,0 +1,28 @@
+:root {
+    --chart-size: 500px;
+}
+
+
+.radar-chart {
+    display: block;
+    width: var(--chart-size) !important;
+    height: calc(var(--chart-size) / 2px) !important;
+}
+
+@media only screen and (max-width: 600px) {
+    :root {
+        --chart-size: 300px;
+    }
+}
+
+@media only screen and (min-width:600px) and (max-width: 1024px) {
+    :root {
+        --chart-size: 400px;
+    }
+}
+
+@media only screen and (max-width: 1510px) {
+    :root {
+        --chart-size: 420px;
+    }
+}

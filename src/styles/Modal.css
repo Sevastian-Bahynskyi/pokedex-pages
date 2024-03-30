@@ -27,6 +27,13 @@
     top: 1rem;
     right: 1rem;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
     min-width: 30px !important;
+}
+
+@media only screen and (max-width: 550px) {
+    .close-button {
+        top: 5px;
+        right: 5px;
+    }
 }
