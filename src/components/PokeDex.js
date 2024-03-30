@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Slider from './Slider';
 import PokeGrid from './PokeGrid';
 import '../styles/PokeDex.css';
@@ -6,6 +6,7 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import Button from '@mui/material/Button';
 import PokeFullCard from './PokeFullCard';
+import { TextField } from '@mui/material';
 
 function PokeDex() {
 	const [cardWidth, setCardWidth] = useState(200);
@@ -18,6 +19,9 @@ function PokeDex() {
 		isVisible: false,
 		pokemonUrl: null,
 	});
+	const [isSmallScreen, setIsSmallScreen] = useState(
+		window.innerWidth <= 768
+	);
 
 	useEffect(() => {
 		let ignore = false;
@@ -44,6 +48,81 @@ function PokeDex() {
 
 		return () => (ignore = true);
 	}, [currentPage, pagination]);
+
+	let controlPanelInputsBigScreeen = (
+		<>
+			<div className="my-slider">
+				<label>Width of a dex: {cardWidth}</label>
+				<Slider
+					from={100}
+					to={400}
+					backgroundColor="#201E1F"
+					thumbColor="#50B2C0"
+					width="10vw"
+					value={cardWidth}
+					onChange={(event) => setCardWidth(event.target.value)}
+				/>
+			</div>
+			<div className="my-slider">
+				<label>Pagination: {pagination}</label>
+				<Slider
+					from={15}
+					to={150}
+					backgroundColor="#201E1F"
+					thumbColor="#50B2C0"
+					width="10vw"
+					step={5}
+					value={pagination}
+					onChange={(event) => setPagination(event.target.value)}
+				/>
+			</div>
+		</>
+	);
+
+	let controlPanelInputsSmallScreeen = (
+		<>
+			<TextField
+				type="number"
+				placeholder={cardWidth}
+				style={{ width: '20vw' }}
+				label="Card width"
+				variant="outlined"
+				onBlur={(event) => {
+					const val = event.target.value;
+					if (val > 40 && val < 500) {
+						setCardWidth(val);
+					}
+				}}
+			/>
+			<TextField
+				type="number"
+				placeholder={pagination}
+				style={{ width: '20vw' }}
+				label="Pagination"
+				variant="outlined"
+				onBlur={(event) => {
+					const val = event.target.value;
+					if (!val || val === '') return;
+					if (val > 5 && val < 150) {
+						setPagination(val);
+					}
+				}}
+			/>
+		</>
+	);
+
+	useEffect(() => {
+		const handleResize = () => {
+			setIsSmallScreen(window.innerWidth <= 768);
+		};
+
+		handleResize();
+		window.addEventListener('resize', handleResize);
+
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, []);
 
 	const handleNextPage = () => {
 		if (currentPage < totalPages) {
@@ -74,31 +153,9 @@ function PokeDex() {
 	return (
 		<div className="main">
 			<div className="control-panel">
-				<div className="my-slider">
-					<label>Width of a dex: {cardWidth}</label>
-					<Slider
-						from={100}
-						to={400}
-						backgroundColor="#201E1F"
-						thumbColor="#50B2C0"
-						width="200px"
-						value={cardWidth}
-						onChange={(event) => setCardWidth(event.target.value)}
-					/>
-				</div>
-				<div className="my-slider">
-					<label>Pagination: {pagination}</label>
-					<Slider
-						from={15}
-						to={150}
-						backgroundColor="#201E1F"
-						thumbColor="#50B2C0"
-						width="200px"
-						step={5}
-						value={pagination}
-						onChange={(event) => setPagination(event.target.value)}
-					/>
-				</div>
+				{isSmallScreen
+					? controlPanelInputsSmallScreeen
+					: controlPanelInputsBigScreeen}
 				<div className="pagination-buttons">
 					<Button
 						className="pagination-button App-pagination-button-previous"

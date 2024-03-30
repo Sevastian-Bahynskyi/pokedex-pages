@@ -1,5 +1,5 @@
 .my-slider {
-    width: 20%;
+    width: 25%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -19,21 +19,21 @@
 }
 
 .grid {
-    margin-top: calc(var(--nav-height) + 10px);
+    margin-top: calc(var(--nav-height) * 3);
 }
 
 .control-panel {
     display: flex;
     width: 100%;
-    height: var(--nav-height);
+    height: calc(var(--nav-height) + 40px);
     background-color: white;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     position: fixed;
     z-index: 10;
     user-select: none;
-    top: 0;
+    top: var(--nav-height);
 }
 
 .main {
