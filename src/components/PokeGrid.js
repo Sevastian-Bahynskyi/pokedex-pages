@@ -6,8 +6,13 @@ import '../styles/PokeCard.css';
 import '../styles/styles.css';
 
 function PokeGrid({ pokeUrlList, cardWidth, initialColumns, onPokeCardClick }) {
-	const calculateColumns = () =>
-		Math.floor(window.innerWidth / cardWidth) - 1;
+	const gridGap = cardWidth / 20;
+
+	const calculateColumns = () => {
+		const availableWidth = window.innerWidth;
+		const cardWithMargin = cardWidth + gridGap;
+		return Math.floor(availableWidth / cardWithMargin);
+	};
 	const [columns, setColumns] = useState(initialColumns);
 	const [pokemonList, setPokemonList] = useState([]);
 	const [isLoading, setIsLoading] = useState(true); // Initialize loading state to true
@@ -73,7 +78,7 @@ function PokeGrid({ pokeUrlList, cardWidth, initialColumns, onPokeCardClick }) {
 		gridTemplateRows: `repeat(${Math.ceil(
 			pokemonList.length / columns
 		)}, 1fr)`,
-		gap: `${cardWidth / 20}px`,
+		gap: `${gridGap}px`,
 	};
 
 	return (

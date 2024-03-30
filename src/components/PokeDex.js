@@ -102,7 +102,6 @@ function PokeDex() {
 				variant="outlined"
 				onBlur={(event) => {
 					const val = event.target.value;
-					if (!val || val === '') return;
 					if (val > 5 && val < 150) {
 						setPagination(val);
 					}
