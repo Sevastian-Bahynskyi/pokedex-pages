@@ -24,8 +24,6 @@ function PokeDex() {
 	);
 
 	useEffect(() => {
-		let ignore = false;
-
 		fetch(
 			`https://pokeapi.co/api/v2/pokemon?limit=${pagination}&offset=${
 				(currentPage - 1) * pagination
@@ -33,20 +31,16 @@ function PokeDex() {
 		)
 			.then((response) => response.json())
 			.then((data) => {
-				if (!ignore) {
-					const pokemonList = data.results.map((p) => p.url);
-					setPokemonUrlList(pokemonList);
-					setTotalPages(Math.ceil(data.count / pagination));
-					if (currentPage > Math.ceil(data.count / pagination)) {
-						setCurrentPage(Math.ceil(data.count / pagination));
-					}
+				const pokemonList = data.results.map((p) => p.url);
+				setPokemonUrlList(pokemonList);
+				setTotalPages(Math.ceil(data.count / pagination));
+				if (currentPage > Math.ceil(data.count / pagination)) {
+					setCurrentPage(Math.ceil(data.count / pagination));
 				}
 			})
 			.catch((error) =>
 				console.error('Error fetching Pokémon data:', error)
 			);
-
-		return () => (ignore = true);
 	}, [currentPage, pagination]);
 
 	let controlPanelInputsBigScreeen = (
