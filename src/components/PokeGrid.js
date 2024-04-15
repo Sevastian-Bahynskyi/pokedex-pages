@@ -7,6 +7,8 @@ import '../styles/styles.css';
 
 function PokeGrid({ pokeUrlList, cardWidth, initialColumns, onPokeCardClick }) {
 	const gridGap = cardWidth / 20;
+	const calculateColumns = () =>
+		Math.floor(window.innerWidth / cardWidth) - 1;
 
 	const [columns, setColumns] = useState(initialColumns);
 	const [pokemonList, setPokemonList] = useState([]);
@@ -56,7 +58,6 @@ function PokeGrid({ pokeUrlList, cardWidth, initialColumns, onPokeCardClick }) {
 
 	useEffect(() => {
 		const handleResize = () => {
-			const calculateColumns = window.innerWidth / cardWidth - 1;
 			setColumns(calculateColumns());
 		};
 
