@@ -56,11 +56,7 @@ function PokeGrid({ pokeUrlList, cardWidth, initialColumns, onPokeCardClick }) {
 
 	useEffect(() => {
 		const handleResize = () => {
-			const calculateColumns = () => {
-				const availableWidth = window.innerWidth;
-				const cardWithMargin = cardWidth + gridGap;
-				return Math.floor(availableWidth / cardWithMargin);
-			};
+			const calculateColumns = window.innerWidth / cardWidth - 1;
 			setColumns(calculateColumns());
 		};
 
